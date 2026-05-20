@@ -66,7 +66,7 @@ pip install pandas scikit-learn transformers torch torchvision torchaudio --inde
 
 ---
 
-## 👥 Tim Proyek & Kontribusi (Kelompok K00)
+## 👥 Tim Proyek & Kontribusi (Kelompok K14)
 
 *   **Rivi Yasha Hafizhan** (NPM: 230625035) — *Data Preprocessing & NLP Pipeline*
 *   **Azka Nabihan Hilmy** (NPM: 2306250541) — *MLOps & Pipeline Architecture*
