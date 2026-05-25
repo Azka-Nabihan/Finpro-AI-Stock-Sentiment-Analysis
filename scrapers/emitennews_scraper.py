@@ -49,7 +49,27 @@ def scrape_emitennews(category='emiten', n_pages=20, output_file='emitennews_dat
                     if match_comment:
                         description = clean_html_tags(match_comment.group(1))
                         
-                    teks_gabungan = f"{title}. {description}" if description else title
+                    # Fetch full text from article page
+                    full_text = ""
+                    try:
+                        res_article = scraper.get(link, timeout=15)
+                        if res_article.status_code == 200:
+                            soup_article = BeautifulSoup(res_article.text, 'html.parser')
+                            max_len = 0
+                            best_div = None
+                            for div in soup_article.find_all('div'):
+                                # Find div with the most text inside immediate <p> tags
+                                text = " ".join([p.get_text(separator=' ', strip=True) for p in div.find_all('p', recursive=False)])
+                                if len(text) > max_len:
+                                    max_len = len(text)
+                                    best_div = div
+                            
+                            if best_div:
+                                full_text = clean_html_tags(" ".join([p.get_text(separator=' ', strip=True) for p in best_div.find_all('p', recursive=False)]))
+                    except Exception as e:
+                        print(f"    [Warning] Failed to fetch full text for {link}: {e}")
+                        
+                    teks_gabungan = full_text if full_text else (f"{title}. {description}" if description else title)
                     data.append({'Teks_Gabungan': teks_gabungan, 'Tanggal': date, 'Link': link})
                 except Exception:
                     continue

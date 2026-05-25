@@ -1,10 +1,9 @@
 {
-  "kode_kelompok": "K00",
+  "kode_kelompok": "K14",
   "topik_pilihan": 4,
   "nama_topik": "Transformer",
   "judul_proyek": "Klasifikasi Sentimen Berita Finansial Indonesia: TF-IDF + SVM vs IndoBERT",
   "abstrak_singkat": "Proyek ini membandingkan kinerja model baseline tradisional (TF-IDF + SVM) dengan model deep learning mutakhir (IndoBERT) untuk analisis sentimen teks finansial berbahasa Indonesia. Data yang digunakan merupakan gabungan dari tweet finansial (ID-SMSA) dan berita portal CNBC, yang diklasifikasikan ke dalam 3 kelas: Positif, Netral, dan Negatif.",
-
   "metode_ai": [
     {
       "nama": "IndoBERT",
@@ -19,7 +18,6 @@
       "catatan": "Menggunakan ekstraksi fitur TfidfVectorizer (Unigram & Bigram)."
     }
   ],
-
   "frameworks": [
     {
       "nama": "Hugging Face Transformers",
@@ -42,7 +40,6 @@
       "kegunaan": "Pembersihan teks (Regex) dan manipulasi struktur dataset (ETL pipeline)."
     }
   ],
-
   "datasets": [
     {
       "nama": "ID-SMSA (Mendeley)",
@@ -67,62 +64,113 @@
       "spek_rl": null
     }
   ],
-
   "metrik_utama": [
     "Accuracy",
     "Macro-F1",
     "Confusion Matrix"
   ],
   "klaim_bonus": [],
-
   "anggota": [
     {
       "nama": "Rivi Yasha Hafizhan",
       "npm": "230625035",
       "peran_utama": "Data Preprocessing & NLP Pipeline",
-      "focus_area": ["Text Cleaning", "Tokenization", "Evaluation Metrics"],
-      "konsep_dikuasai_implementasi": ["RegEx", "WordPiece Tokenizer", "Confusion Matrix"],
-      "konsep_dikuasai_teori": ["Skema Sentimen Mikro", "Evaluasi Model Klasifikasi"],
-      "bagian_laporan": ["Bab I", "Bab III"],
-      "bagian_kode": ["preprocessing.py", "evaluate_model.py"]
+      "focus_area": [
+        "Text Cleaning",
+        "Tokenization",
+        "Evaluation Metrics"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "RegEx",
+        "WordPiece Tokenizer",
+        "Confusion Matrix"
+      ],
+      "konsep_dikuasai_teori": [
+        "Skema Sentimen Mikro",
+        "Evaluasi Model Klasifikasi"
+      ],
+      "bagian_laporan": [
+        "Bab I",
+        "Bab III"
+      ],
+      "bagian_kode": [
+        "preprocessing.py",
+        "evaluate_model.py"
+      ]
     },
     {
       "nama": "Azka Nabihan Hilmy",
       "npm": "2306250541",
       "peran_utama": "MLOps & Pipeline Architecture",
-      "focus_area": ["ETL Pipeline", "Environment Config", "GPU Optimization"],
-      "konsep_dikuasai_implementasi": ["Dekopel Notebook", "FP16 Mixed Precision", ".venv Management"],
-      "konsep_dikuasai_teori": ["MLOps", "Hardware Constraint (OOM)"],
-      "bagian_laporan": ["Bab III (Arsitektur Pipeline & Justifikasi Metrik)"],
-      "bagian_kode": ["Data_Pipeline_Preprocessing.ipynb", "Model_Training_and_Evaluation.ipynb"]
+      "focus_area": [
+        "ETL Pipeline",
+        "Environment Config",
+        "GPU Optimization"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Dekopel Notebook",
+        "FP16 Mixed Precision",
+        ".venv Management"
+      ],
+      "konsep_dikuasai_teori": [
+        "MLOps",
+        "Hardware Constraint (OOM)"
+      ],
+      "bagian_laporan": [
+        "Bab III (Arsitektur Pipeline & Justifikasi Metrik)"
+      ],
+      "bagian_kode": [
+        "Data_Pipeline_Preprocessing.ipynb",
+        "Model_Training_and_Evaluation.ipynb"
+      ]
     },
     {
       "nama": "M. Arya Wiandra Utomo",
       "npm": "2306218295",
       "peran_utama": "Model Training & Hyperparameter Tuning",
-      "focus_area": ["Baseline SVM", "Transformer Fine-Tuning"],
-      "konsep_dikuasai_implementasi": ["HuggingFace Trainer API", "TF-IDF", "Support Vector Machine"],
-      "konsep_dikuasai_teori": ["Transformer Pooling", "Overfitting Analysis", "Loss Optimization"],
-      "bagian_laporan": ["Bab II (Transformer)"],
-      "bagian_kode": ["baseline_model.py", "train_transformer.py"]
+      "focus_area": [
+        "Baseline SVM",
+        "Transformer Fine-Tuning"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "HuggingFace Trainer API",
+        "TF-IDF",
+        "Support Vector Machine"
+      ],
+      "konsep_dikuasai_teori": [
+        "Transformer Pooling",
+        "Overfitting Analysis",
+        "Loss Optimization"
+      ],
+      "bagian_laporan": [
+        "Bab II (Transformer)"
+      ],
+      "bagian_kode": [
+        "baseline_model.py",
+        "train_transformer.py"
+      ]
     }
   ],
-
   "tautan": {
     "github": "https://github.com/Azka-Nabihan/Finpro-AI-Stock-Sentiment-Analysis.git",
-    "colab": "[ISI TAUTAN GOOGLE COLAB]",
-    "dataset_mandiri": "[ISI TAUTAN GOOGLE DRIVE]",
+    "colab_data_pipeline": "https://colab.research.google.com/drive/1wEa__nkSkGra4-6VlOAKqR44YP5waNaq?usp=sharing",
+    "colab_model_training": "https://colab.research.google.com/drive/1GuJRXbGtVcgBh6b49acJ3J_LL7PWo3IZ?usp=sharing",
+    "dataset_mandiri": null,
+    "dataset_ID-SMSA": "https://data.mendeley.com/datasets/tn4vzs8tdw/3",
+    "dataset_CNBCI_Sentimented": "https://www.kaggle.com/datasets/triagungj/cnbc-indonesia-stock-news-sentiment-dataset",
     "video_demo": null
   },
-
   "ai_assistant_usage": {
     "digunakan": true,
-    "tools": ["ChatGPT (OpenAI)", "Gemini (Google)", "GitHub Copilot"],
+    "tools": [
+      "ChatGPT (OpenAI)",
+      "Gemini (Google)"
+    ],
     "bagian": [
       "Pembuatan pola RegEx dan optimasi tokenizer HuggingFace (Rivi)",
       "Merencanakan outline pipeline ETL dan strategi scraping data (Azka)",
       "Menyusun boilerplate HuggingFace Trainer dan mendiagnosis CUDA OOM (Arya)"
     ],
-    "estimasi_persentase": 25
+    "estimasi_persentase": 40
   }
 }
