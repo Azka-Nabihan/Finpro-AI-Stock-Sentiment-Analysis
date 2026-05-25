@@ -3,7 +3,8 @@
   "topik_pilihan": 4,
   "nama_topik": "Transformer",
   "judul_proyek": "Klasifikasi Sentimen Berita Finansial Indonesia: TF-IDF + SVM vs IndoBERT",
-  "abstrak_singkat": "Proyek ini membandingkan kinerja model baseline tradisional (TF-IDF + SVM) dengan model deep learning mutakhir (IndoBERT) untuk analisis sentimen teks finansial berbahasa Indonesia. Data yang digunakan merupakan gabungan dari tweet finansial (ID-SMSA) dan berita portal CNBC, yang diklasifikasikan ke dalam 3 kelas: Positif, Netral, dan Negatif.",
+  "abstrak_singkat": "Proyek ini membandingkan kinerja model baseline tradisional (TF-IDF + SVM) dengan model deep learning mutakhir (IndoBERT) untuk analisis sentimen teks finansial berbahasa Indonesia. Data gabungan telah diproses menjadi dataset akhir untuk pelatihan dan evaluasi.",
+
   "metode_ai": [
     {
       "nama": "IndoBERT",
@@ -18,6 +19,7 @@
       "catatan": "Menggunakan ekstraksi fitur TfidfVectorizer (Unigram & Bigram)."
     }
   ],
+
   "frameworks": [
     {
       "nama": "Hugging Face Transformers",
@@ -40,12 +42,13 @@
       "kegunaan": "Pembersihan teks (Regex) dan manipulasi struktur dataset (ETL pipeline)."
     }
   ],
+
   "datasets": [
     {
       "nama": "ID-SMSA (Mendeley)",
       "tipe": "publik",
       "sumber": "Dataset scraping Twitter berbahasa Indonesia",
-      "url_sumber_publik": "",
+      "url_sumber_publik": "https://data.mendeley.com/datasets/tn4vzs8tdw/3",
       "jumlah_sampel": 3291,
       "jumlah_kelas": 3,
       "proses_akuisisi_mandiri": "",
@@ -56,7 +59,7 @@
       "nama": "Dataset CNBCI Sentimented",
       "tipe": "hibrida",
       "sumber": "Scraping judul berita dari portal CNBC Indonesia",
-      "url_sumber_publik": "",
+      "url_sumber_publik": "https://www.kaggle.com/datasets/triagungj/cnbc-indonesia-stock-news-sentiment-dataset",
       "jumlah_sampel": 9820,
       "jumlah_kelas": 3,
       "proses_akuisisi_mandiri": "Disiapkan secara lokal",
@@ -64,26 +67,55 @@
       "spek_rl": null
     }
   ],
+
   "metrik_utama": [
     "Accuracy",
     "Macro-F1",
     "Confusion Matrix"
   ],
   "klaim_bonus": [],
+
   "anggota": [
+    {
+      "nama": "Azka Nabihan Hilmy",
+      "npm": "2306250541",
+      "peran_utama": "Scraping & Dataset Preparation",
+      "focus_area": [
+        "Web Scraping",
+        "ETL Pipeline",
+        "Dataset Preparation"
+      ],
+      "konsep_dikuasai_implementasi": [
+        "Scraping reliability",
+        "Data merging & deduplication",
+        "FP16 Mixed Precision (support)"
+      ],
+      "konsep_dikuasai_teori": [
+        "MLOps",
+        "Data acquisition ethics"
+      ],
+      "bagian_laporan": [
+        "Bab III (Arsitektur Pipeline & Akuisisi Data)"
+      ],
+      "bagian_kode": [
+        "scrapers/",
+        "datasets/datasets_labelling.py",
+        "datasets/processed/"
+      ]
+    },
     {
       "nama": "Rivi Yasha Hafizhan",
       "npm": "230625035",
-      "peran_utama": "Data Preprocessing & NLP Pipeline",
+      "peran_utama": "Data Cleaning & Model Training (Notebook)",
       "focus_area": [
         "Text Cleaning",
         "Tokenization",
-        "Evaluation Metrics"
+        "Transformer Fine-Tuning"
       ],
       "konsep_dikuasai_implementasi": [
         "RegEx",
         "WordPiece Tokenizer",
-        "Confusion Matrix"
+        "HuggingFace Trainer API"
       ],
       "konsep_dikuasai_teori": [
         "Skema Sentimen Mikro",
@@ -91,51 +123,27 @@
       ],
       "bagian_laporan": [
         "Bab I",
-        "Bab III"
+        "Bab III (Preprocessing & Eksperimen)"
       ],
       "bagian_kode": [
-        "preprocessing.py",
-        "evaluate_model.py"
-      ]
-    },
-    {
-      "nama": "Azka Nabihan Hilmy",
-      "npm": "2306250541",
-      "peran_utama": "MLOps & Pipeline Architecture",
-      "focus_area": [
-        "ETL Pipeline",
-        "Environment Config",
-        "GPU Optimization"
-      ],
-      "konsep_dikuasai_implementasi": [
-        "Dekopel Notebook",
-        "FP16 Mixed Precision",
-        ".venv Management"
-      ],
-      "konsep_dikuasai_teori": [
-        "MLOps",
-        "Hardware Constraint (OOM)"
-      ],
-      "bagian_laporan": [
-        "Bab III (Arsitektur Pipeline & Justifikasi Metrik)"
-      ],
-      "bagian_kode": [
-        "Data_Pipeline_Preprocessing.ipynb",
-        "Model_Training_and_Evaluation.ipynb"
+        "cleaning/merge_clean_all.py",
+        "cleaning/prepare_training_data.py",
+        "Transformer_Training.ipynb"
       ]
     },
     {
       "nama": "M. Arya Wiandra Utomo",
       "npm": "2306218295",
-      "peran_utama": "Model Training & Hyperparameter Tuning",
+      "peran_utama": "Model Evaluation & Hyperparameter Tuning",
       "focus_area": [
-        "Baseline SVM",
-        "Transformer Fine-Tuning"
+        "Model Evaluation",
+        "Hyperparameter Tuning",
+        "Baseline Comparison"
       ],
       "konsep_dikuasai_implementasi": [
-        "HuggingFace Trainer API",
-        "TF-IDF",
-        "Support Vector Machine"
+        "Evaluation Metrics (Macro-F1)",
+        "Confusion Matrix analysis",
+        "SVM optimization"
       ],
       "konsep_dikuasai_teori": [
         "Transformer Pooling",
@@ -143,14 +151,16 @@
         "Loss Optimization"
       ],
       "bagian_laporan": [
-        "Bab II (Transformer)"
+        "Bab II (Transformer)",
+        "Bab IV (Hasil & Diskusi)"
       ],
       "bagian_kode": [
-        "baseline_model.py",
-        "train_transformer.py"
+        "optimize_svm.py",
+        "evaluate_model.py"
       ]
     }
   ],
+
   "tautan": {
     "github": "https://github.com/Azka-Nabihan/Finpro-AI-Stock-Sentiment-Analysis.git",
     "colab_data_pipeline": "https://colab.research.google.com/drive/1wEa__nkSkGra4-6VlOAKqR44YP5waNaq?usp=sharing",
@@ -160,6 +170,7 @@
     "dataset_CNBCI_Sentimented": "https://www.kaggle.com/datasets/triagungj/cnbc-indonesia-stock-news-sentiment-dataset",
     "video_demo": null
   },
+
   "ai_assistant_usage": {
     "digunakan": true,
     "tools": [
