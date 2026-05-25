@@ -22,9 +22,8 @@ Repositori ini telah dirombak menjadi struktur modular (MLOps) agar lebih mudah 
 ├── datasets/                         # Penyimpanan Dataset
 │   ├── raw/                          # Dataset mentah hasil scraping
 │   └── processed/                    # Dataset bersih siap latih (train.csv, val.csv, test.csv)
-├── Temp/                             # Notebook untuk Latihan Model (Di-run di Google Colab)
-│   ├── TF_IDF+SVM_Training (2).ipynb # Pelatihan model baseline SVM (dengan Class Weights)
-│   └── Transformer_Training (4).ipynb# Fine-tuning IndoBERT (dengan Layer Freezing & Dropout)
+├── TF_IDF+SVM_Training.ipynb       # Pelatihan model baseline SVM (dengan Class Weights)
+├── Transformer_Training.ipynb        # Fine-tuning IndoBERT (dengan Layer Freezing & Dropout)
 ├── datasets_labelling.py             # Script pelabelan otomatis berita menggunakan LLM
 ├── metadata-progress-report.json     # Laporan progres tugas
 └── README.md                         # Dokumentasi proyek
@@ -54,7 +53,7 @@ Sebagian data hasil scraping belum memiliki label sentimen. Script ini menggunak
 ### 4. 🗃️ Persiapan & Pembagian Data (`cleaning/prepare_training_data.py`)
 Membersihkan data kosong/duplikat dari `final_dataset_berlabel.csv`, lalu mendistribusikan data utuh tersebut menjadi `train.csv` (80%), `val.csv` (10%), dan `test.csv` (10%). Dataset **dibiarkan pada distribusi naturalnya** (imbalanced) untuk mencegah *overfitting* akibat duplikasi teks.
 
-### 5. ⚡ Fase Pelatihan Model (`Temp/`)
+### 5. ⚡ Fase Pelatihan Model
 Dataset hasil olahan (berada di `datasets/processed/`) diunggah ke Google Colab untuk pelatihan model berat.
 - **Model Baseline (SVM)**: Menggunakan ekstraksi fitur TF-IDF. Dioptimasi dengan `GridSearchCV` (`f1_macro`) dan diberi **Class Weights (Balanced)**.
 - **Model Utama (IndoBERT)**: Melakukan *fine-tuning* pada `indobenchmark/indobert-base-p1`. Diterapkan teknik **Layer Freezing**, peningkatan **Dropout** (20%), dan **Custom Trainer** dengan **Class Weights**.
@@ -68,7 +67,7 @@ Dataset hasil olahan (berada di `datasets/processed/`) diunggah ke Google Colab 
 3. **Pelabelan AI**: Jalankan `python datasets_labelling.py` untuk melabeli data yang belum berlabel. Hasil akhir dari proses ini akan tersimpan sebagai `datasets/processed/final_dataset_berlabel.csv`.
 4. **Siapkan Data Latih**: Jalankan `python cleaning/prepare_training_data.py` untuk memecah dataset final tersebut menjadi `train`, `val`, dan `test`.
 5. **Training Model (Cloud/GPU)**: 
-   - Unggah folder `datasets/processed/` dan file Notebook dari `Temp/` ke Google Colab.
+   - Unggah folder `datasets/processed/` dan file Notebook (`TF_IDF+SVM_Training.ipynb` & `Transformer_Training.ipynb`) ke Google Colab.
    - Aktifkan Runtime **T4 GPU**.
    - Sesuaikan `PATH` yang ada di dalam *notebook* lalu jalankan seluruh Cell untuk melakukan *training* dan mendapatkan *Confusion Matrix* akhir.
 
